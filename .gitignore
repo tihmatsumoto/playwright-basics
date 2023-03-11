@@ -43,3 +43,6 @@ package-lock.json
 # Test results/reports
 test-results
 playwright-report
+
+# Recordings/SS
+*.png
