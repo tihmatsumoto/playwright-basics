@@ -40,5 +40,6 @@ dist/**/*
 # Lock file
 package-lock.json
 
-# Test results
+# Test results/reports
 test-results
+playwright-report
