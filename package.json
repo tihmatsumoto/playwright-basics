@@ -9,7 +9,7 @@
     "test:browsers": "npx playwright test --browser=all",
     "test:initial": "npx playwright test --grep @initial",
     "test:report": "npx playwright test --reporter=html && npx playwright show-report",
-    "test:e2e": "npx playwright test --config=e2e.config.ts --project=Chromium"
+    "test:e2e": "npx playwright test --config=e2e.config.ts"
   },
   "author": "",
   "license": "ISC",
