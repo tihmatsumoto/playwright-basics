@@ -15,4 +15,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
       - name: Run tests
-        run: npx playwright test
+        run: npm run test:report
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: e2e-report
+          path: .playwright-report
+          retention-days: 1
