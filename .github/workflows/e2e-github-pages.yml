@@ -1,4 +1,4 @@
-name: E2E tests
+name: E2E tests - GitHub Pages Report
 
 on:
   workflow_dispatch:
@@ -24,4 +24,4 @@ jobs:
           path: ./playwright-report
       - name: Deplo to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v1
