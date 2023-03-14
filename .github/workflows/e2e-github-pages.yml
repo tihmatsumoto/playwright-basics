@@ -25,3 +25,7 @@ jobs:
       - name: Deplo to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        permissions:
+          contents: read
+          pages: write
+          id-token: write
