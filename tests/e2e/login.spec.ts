@@ -1,32 +1,26 @@
 import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../page-objects/LoginPage'
 
 test.describe.parallel("Login/Logout", () => {
+  let loginPage: LoginPage
+
   test.beforeEach(async ({ page }) => {
-    await page.goto("https://www.saucedemo.com/")
+    loginPage = new LoginPage(page)
+    await loginPage.visit()
   })
 
   test('Fail to log in with wrong username and password', async ({ page }) => {
-    await page.type('#user-name', 'fail user')
-    await page.type('#password', 'fail password')
-    await page.click('#login-button')
-    const errorMessage = await page.locator('.error-message-container')
-    await expect(errorMessage).toContainText('Epic sadface: Username and password do not match any user in this service')
+    await loginPage.login('fail user', 'fail password')
+    await loginPage.assertErrorMessage('Epic sadface: Username and password do not match any user in this service')
   })
 
   test('Fail to log in with locked out user', async ({ page }) => {
-    await page.type('#user-name', 'locked_out_user')
-    await page.type('#password', 'secret_sauce')
-    await page.click('#login-button')
-    const errorMessage = await page.locator('.error-message-container')
-    await expect(errorMessage).toContainText('Epic sadface: Sorry, this user has been locked out.')
+    await loginPage.login('locked_out_user', 'secret_sauce')
+    await loginPage.assertErrorMessage('Epic sadface: Sorry, this user has been locked out.')
   })
 
   test("Login to Sauce Demo Store", async ({ page }) => {
-    await page.type('#user-name', 'standard_user')
-    await page.type('#password', 'secret_sauce')
-    await page.click('#login-button')
-    const backpackProductTitle = await page.locator('#item_4_title_link')
-    expect(backpackProductTitle).toHaveText('Sauce Labs Backpack')
+    await loginPage.login('standard_user', 'secret_sauce')
     await expect(page).toHaveURL("https://www.saucedemo.com/inventory.html")
   })
 })
