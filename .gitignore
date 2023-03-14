@@ -37,9 +37,6 @@ Thumbs.db
 # Ignore built ts files
 dist/**/*
 
-# Lock file
-package-lock.json
-
 # Test results/reports
 test-results
 playwright-report
