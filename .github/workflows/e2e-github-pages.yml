@@ -3,6 +3,11 @@ name: E2E tests - GitHub Pages Report
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   tests_e2e:
     name: Run end-to-end tests
@@ -25,7 +30,3 @@ jobs:
       - name: Deplo to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-        permissions:
-          contents: read
-          pages: write
-          id-token: write
