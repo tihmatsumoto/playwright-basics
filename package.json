@@ -8,7 +8,7 @@
     "test:verify": "npx playwright test --headed",
     "test:browsers": "npx playwright test --browser=all",
     "test:initial": "npx playwright test --grep @initial",
-    "test:report": "npx playwright test --config=e2e.config.ts --reporter=html && npx playwright show-report",
+    "test:report": "npx playwright test --config=e2e.config.ts --reporter=html",
     "test:e2e": "npx playwright test --config=e2e.config.ts"
   },
   "author": "",
